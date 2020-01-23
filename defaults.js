@@ -7,6 +7,7 @@ var DEFAULTS = {
     defaultColor: '#999'
   },
   edges: {
+    reducer: null,
     defaultColor: '#ccc'
   }
 };
