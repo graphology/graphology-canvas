@@ -1,0 +1,45 @@
+{
+  "name": "graphology-canvas",
+  "version": "1.5.0",
+  "description": "Canvas rendering routines for graphology.",
+  "main": "index.js",
+  "files": [],
+  "scripts": {
+    "lint": "eslint '**/*.js'",
+    "prepublish": "npm run lint && npm test",
+    "test": "mocha test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/graphology/graphology-canvas.git"
+  },
+  "keywords": [
+    "graph",
+    "graphology",
+    "canvas",
+    "raster"
+  ],
+  "contributors": [
+    {
+      "name": "Guillaume Plique",
+      "url": "http://github.com/Yomguithereal"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/graphology/graphology-canvas/issues"
+  },
+  "homepage": "https://github.com/graphology/graphology-canvas#readme",
+  "devDependencies": {
+    "@yomguithereal/eslint-config": "^4.0.0",
+    "eslint": "^6.7.2",
+    "graphology": "^0.14.1",
+    "mocha": "^7.0.0"
+  },
+  "eslintConfig": {
+    "extends": "@yomguithereal/eslint-config",
+    "globals": {
+      "Set": true
+    }
+  }
+}
