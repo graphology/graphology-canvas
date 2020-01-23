@@ -13,7 +13,7 @@
     "ftest": "node test/ftest.js",
     "lint": "eslint '**/*.js'",
     "prepublish": "npm run lint && npm test",
-    "test": "mocha test"
+    "test": "mocha test/index.js"
   },
   "repository": {
     "type": "git",
