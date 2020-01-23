@@ -14,4 +14,9 @@ Note that `graphology-canvas` relies on [`node-canvas`](https://www.npmjs.com/pa
 
 ## Usage
 
-WIP...
+```js
+var render = require('graphology-canvas');
+
+render(graph, './graph.png', () => console.log('Done!'));
+render(graph, './graph.png', settings, () => console.log('Done!'));
+```

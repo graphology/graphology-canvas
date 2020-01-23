@@ -15,6 +15,7 @@ exports.DEFAULTS = DEFAULTS;
 
 exports.DEFAULT_NODE_REDUCER = function(settings, node, attr) {
   var reduced = {
+    type: attr.type || 'circle',
     label: attr.label || node,
     x: attr.x,
     y: attr.y,
@@ -24,6 +25,16 @@ exports.DEFAULT_NODE_REDUCER = function(settings, node, attr) {
 
   if (typeof reduced.x !== 'number' || typeof reduced.y !== 'number')
     throw new Error('graphology-canvas: the "' + node + '" node has no valid x or y position. Expecting a number.');
+
+  return reduced;
+};
+
+exports.DEFAULT_EDGE_REDUCER = function(settings, edge, attr) {
+  var reduced = {
+    type: attr.type || 'line',
+    size: attr.size || 1,
+    color: attr.color || settings.edges.defaultColor
+  };
 
   return reduced;
 };

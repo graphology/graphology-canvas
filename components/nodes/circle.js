@@ -6,7 +6,7 @@
  */
 var TAU = Math.PI * 2;
 
-module.exports = function drawNode(context, data) {
+module.exports = function drawNode(settings, context, data) {
   context.fillStyle = data.color;
   context.beginPath();
   context.arc(
