@@ -9,7 +9,7 @@ var canvasApi = require('canvas');
 var defaultsDeep = require('lodash/defaultsDeep');
 var renderer = require('./renderer.js');
 
-var DEFAULTS = require('./defaults.js');
+var DEFAULTS = require('./defaults.js').DEFAULTS;
 
 module.exports = function render(graph, outputPath, settings, callback) {
   if (arguments.length === 3) {

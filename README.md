@@ -10,6 +10,8 @@ Canvas rendering routines for [`graphology`](https://graphology.github.io).
 npm install graphology-canvas
 ```
 
+Note that `graphology-canvas` relies on [`node-canvas`](https://www.npmjs.com/package/canvas). As such, if you experience issues when installing the libray check that you have the required dependencies as listed [here](https://www.npmjs.com/package/canvas#compiling).
+
 ## Usage
 
 WIP...
