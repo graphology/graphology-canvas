@@ -19,6 +19,6 @@ var ARCTIC = gexf.parse(Graph, fs.readFileSync(ARCTIC_PATH, 'utf-8'));
 
 console.log('Rendering arctic.gexf...');
 
-renderToPNG(ARCTIC, RENDER_PATH, {width: 4096}, function() {
+renderToPNG(ARCTIC, RENDER_PATH, {width: 4096, height: 2048}, function() {
   console.log('Done!');
 });

@@ -1,4 +1,4 @@
-var defaultsDeep = require('lodash/defaultsDeep');
+var merge = require('lodash/merge');
 
 var DEFAULTS = {
   margin: 20,
@@ -17,8 +17,6 @@ var DEFAULTS = {
 exports.DEFAULTS = DEFAULTS;
 
 exports.refineSettings = function refineSettings(settings) {
-  settings = defaultsDeep({}, DEFAULTS, settings);
-
   var dimensions = {
     width: settings.width,
     height: settings.height
@@ -33,8 +31,7 @@ exports.refineSettings = function refineSettings(settings) {
   if (dimensions.height && !dimensions.width)
     dimensions.width = dimensions.height;
 
-  settings.width = dimensions.width;
-  settings.height = dimensions.height;
+  settings = merge({}, DEFAULTS, settings, dimensions);
 
   return settings;
 };
