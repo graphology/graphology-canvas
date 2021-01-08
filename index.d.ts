@@ -1,4 +1,27 @@
-import Graph from 'graphology-types';
+import Graph, {Attributes, NodeKey, EdgeKey} from 'graphology-types';
 
-export default function render(graph: Graph, outputPath: string, callback: () => void): void;
-export default function render(graph: Graph, outputPath: string, settings: any, callback: () => void): void;
+export type CanvasRendererSettings<
+  NodeAttributes extends Attributes = Attributes,
+  EdgeAttributes extends Attributes = Attributes
+> = {
+  margin?: number;
+  width?: number;
+  height?: number;
+  nodes?: {
+    defaultColor?: string;
+    reducer?: (settings: CanvasRendererSettings, node: NodeKey, attributes: NodeAttributes) => Attributes;
+  },
+  edges?: {
+    defaultColor?: string;
+    reducer?: (settings: CanvasRendererSettings, edge: EdgeKey, attributes: EdgeAttributes) => Attributes;
+  }
+};
+
+export function render<
+  NodeAttributes extends Attributes = Attributes,
+  EdgeAttributes extends Attributes = Attributes
+>(
+  graph: Graph,
+  context: CanvasRenderingContext2D,
+  settings?: CanvasRendererSettings<NodeAttributes, EdgeAttributes>
+): void;

@@ -1,3 +1,5 @@
+var defaultsDeep = require('lodash/defaultsDeep');
+
 var DEFAULTS = {
   margin: 20,
   width: 2048,
@@ -13,6 +15,30 @@ var DEFAULTS = {
 };
 
 exports.DEFAULTS = DEFAULTS;
+
+exports.refineSettings = function refineSettings(settings) {
+  settings = defaultsDeep({}, DEFAULTS, settings);
+
+  var dimensions = {
+    width: settings.width,
+    height: settings.height
+  };
+
+  if (!dimensions.width && !dimensions.height)
+    throw new Error('graphology-canvas: need at least a valid width or height!');
+
+  if (dimensions.width && !dimensions.height)
+    dimensions.height = dimensions.width;
+
+  if (dimensions.height && !dimensions.width)
+    dimensions.width = dimensions.height;
+
+  settings.width = dimensions.width;
+  settings.height = dimensions.height;
+
+  return settings;
+};
+
 
 exports.DEFAULT_NODE_REDUCER = function(settings, node, attr) {
   var reduced = {

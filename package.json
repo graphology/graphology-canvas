@@ -8,9 +8,10 @@
     "*.d.ts",
     "components",
     "defaults.js",
+    "helpers.js",
     "index.js",
-    "renderer.js",
-    "helpers.js"
+    "node.js",
+    "renderer.js"
   ],
   "scripts": {
     "ftest": "node test/ftest.js",

@@ -7,7 +7,7 @@ var fs = require('fs-extra');
 var Graph = require('graphology');
 var gexf = require('graphology-gexf');
 var path = require('path');
-var render = require('../');
+var renderToPNG = require('../node.js').renderToPNG;
 
 var OUTPUT_PATH = path.join(__dirname, 'output');
 var ARCTIC_PATH = path.join(__dirname, 'resources', 'arctic.gexf');
@@ -19,6 +19,6 @@ var ARCTIC = gexf.parse(Graph, fs.readFileSync(ARCTIC_PATH, 'utf-8'));
 
 console.log('Rendering arctic.gexf...');
 
-render(ARCTIC, RENDER_PATH, {width: 4096, height: 4096}, function() {
+renderToPNG(ARCTIC, RENDER_PATH, {width: 4096}, function() {
   console.log('Done!');
 });

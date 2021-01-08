@@ -4,7 +4,6 @@
  *
  * Function taking a canvas context and rendering the given graph.
  */
-var isGraph = require('graphology-utils/is-graph');
 var helpers = require('./helpers.js');
 var defaults = require('./defaults.js');
 var fillBackground = require('./components/background.js');
@@ -19,8 +18,6 @@ var components = {
 };
 
 function renderer(graph, context, settings) {
-  if (!isGraph(graph))
-    throw new Error('graphology-canvas/renderer: expecting a valid graphology instance.');
 
   // Reducing nodes
   var nodeData = helpers.reduceNodes(graph, settings);

@@ -2,34 +2,18 @@
  * Graphology Canvas Endpoint
  * ===========================
  *
- * Node.js API relying on `node-canvas` and Cairo.
+ * Publicly-exposed routine used to render the given graph into an arbitrary
+ * canvas context.
  */
-var fs = require('fs');
-var canvasApi = require('canvas');
-var defaultsDeep = require('lodash/defaultsDeep');
+var isGraph = require('graphology-utils/is-graph');
 var renderer = require('./renderer.js');
+var refineSettings = require('./defaults.js').refineSettings;
 
-var DEFAULTS = require('./defaults.js').DEFAULTS;
+exports.render = function render(graph, context, settings) {
+  if (!isGraph(graph))
+    throw new Error('graphology-canvas/render: expecting a valid graphology instance.');
 
-module.exports = function render(graph, outputPath, settings, callback) {
-  if (arguments.length === 3) {
-    callback = settings;
-    settings = {};
-  }
-
-  settings = defaultsDeep({}, DEFAULTS, settings);
-
-  var canvas = canvasApi.createCanvas(settings.width, settings.height);
-  var context = canvas.getContext('2d');
+  settings = refineSettings(settings);
 
   renderer(graph, context, settings);
-
-  var out = fs.createWriteStream(outputPath);
-  var pngStream = canvas.createPNGStream();
-
-  pngStream.pipe(out);
-
-  out.once('finish', function() {
-    callback();
-  });
 };
