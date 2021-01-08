@@ -6,7 +6,13 @@
  */
 var defaults = require('./defaults.js');
 
-// Taken from @jacomyma (graph-recipes)
+var CAMERA = {
+  x: 0.5,
+  y: 0.5,
+  angle: 0,
+  ratio: 1
+};
+
 function reduceNodes(graph, settings) {
   var containerWidth = settings.width,
       containerHeight = settings.height;
@@ -41,13 +47,38 @@ function reduceNodes(graph, settings) {
   var graphWidth = xMax - xMin,
       graphHeight = yMax - yMin;
 
+  var ratio = Math.max(graphWidth, graphHeight) || 1;
+
+  var dX = (xMax + xMin) / 2;
+  var dY = (yMax + yMin) / 2;
+
+  var smallest = Math.min(containerWidth, containerHeight);
+
+  var dpX = smallest / containerWidth;
+  var dpY = smallest / containerHeight;
+  var dpRatio = CAMERA.ratio / smallest;
+
   var k, n;
+  var x, y;
 
   for (k in data) {
     n = data[k];
 
-    n.x = containerWidth * ((n.x - xMin) / graphWidth);
-    n.y = containerHeight * (1 - (n.y - yMin) / graphHeight);
+    // Normalize
+    x = 0.5 + (n.x - dX) / ratio;
+    y = 0.5 + (n.y - dY) / ratio;
+
+    // Align
+    x = (x - CAMERA.x) / dpRatio;
+    y = (CAMERA.y - y) / dpRatio;
+
+    // Rotate
+    x = x * Math.cos(CAMERA.angle) - y * Math.sin(CAMERA.angle);
+    y = y * Math.cos(CAMERA.angle) + x * Math.sin(CAMERA.angle);
+
+    n.x = x + smallest / 2 / dpX;
+    n.y = y + smallest / 2 / dpY;
+
   }
 
   return data;
