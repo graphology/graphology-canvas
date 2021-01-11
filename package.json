@@ -46,7 +46,7 @@
     "canvas": "^2.6.1",
     "eslint": "^7.17.0",
     "fs-extra": "^9.0.1",
-    "graphology": "^0.19.2",
+    "graphology": "^0.19.3",
     "graphology-gexf": "^0.7.2",
     "graphology-types": "^0.19.2",
     "mocha": "^8.2.1"
