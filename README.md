@@ -28,6 +28,16 @@ import {render} from 'graphology-canvas';
 render(graph, context, settings);
 ```
 
+### Rendering asynchronously to avoid freezing main thread
+
+```js
+import {renderAsync} from 'graphology-canvas';
+
+renderAsync(graph, context, settings, function() {
+  console.log('Done!');
+});
+```
+
 ### Rendering a graph to PNG in node
 
 ```js
@@ -48,3 +58,7 @@ renderToPNG(graph, './graph.png', settings, () => console.log('Done!'));
 * **edges** *?object*: node-related settings:
   * **defaultColor** *?string* [`#999`]: default color for edges.
   * **reducer** *?function*: reducer fonction for edges taking the rendering settings, the node key and its attributes and tasked to return rendering info such as `color`, `size` etc.
+
+### Async Settings
+
+* **batchSize** *?number* [`500`]: number of items to render on canvas on each animation frame, increase or decrease to tweak performance vs. UI availability.
