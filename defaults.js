@@ -1,6 +1,7 @@
 var merge = require('lodash/merge');
 
 var DEFAULTS = {
+  batchSize: 500,
   margin: 20,
   width: 2048,
   height: 2048,

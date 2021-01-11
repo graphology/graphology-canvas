@@ -6,7 +6,7 @@
  * canvas context.
  */
 var isGraph = require('graphology-utils/is-graph');
-var renderer = require('./renderer.js');
+var lib = require('./renderer.js');
 var refineSettings = require('./defaults.js').refineSettings;
 
 exports.render = function render(graph, context, settings) {
@@ -15,5 +15,16 @@ exports.render = function render(graph, context, settings) {
 
   settings = refineSettings(settings);
 
-  renderer(graph, context, settings);
+  lib.renderSync(graph, context, settings);
+};
+
+exports.renderAsync = function renderAsync(graph, context, settings, callback) {
+  if (arguments.length === 3) {
+    callback = settings;
+    settings = {};
+  }
+
+  settings = refineSettings(settings);
+
+  lib.renderAsync(graph, context, settings, callback);
 };
