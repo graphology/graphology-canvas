@@ -52,6 +52,9 @@ function reduceNodes(graph, settings) {
   var dX = (xMax + xMin) / 2;
   var dY = (yMax + yMin) / 2;
 
+  containerWidth -= settings.margin * 2;
+  containerHeight -= settings.margin * 2;
+
   var smallest = Math.min(containerWidth, containerHeight);
 
   var dpX = smallest / containerWidth;
@@ -76,9 +79,8 @@ function reduceNodes(graph, settings) {
     x = x * Math.cos(CAMERA.angle) - y * Math.sin(CAMERA.angle);
     y = y * Math.cos(CAMERA.angle) + x * Math.sin(CAMERA.angle);
 
-    n.x = x + smallest / 2 / dpX;
-    n.y = y + smallest / 2 / dpY;
-
+    n.x = settings.margin + x + smallest / 2 / dpX;
+    n.y = settings.margin + y + smallest / 2 / dpY;
   }
 
   return data;
