@@ -18,13 +18,12 @@ var DEFAULTS = {
 exports.DEFAULTS = DEFAULTS;
 
 exports.refineSettings = function refineSettings(settings) {
+  settings = settings || {};
+
   var dimensions = {
     width: settings.width,
     height: settings.height
   };
-
-  if (!dimensions.width && !dimensions.height)
-    throw new Error('graphology-canvas: need at least a valid width or height!');
 
   if (dimensions.width && !dimensions.height)
     dimensions.height = dimensions.width;
@@ -33,6 +32,9 @@ exports.refineSettings = function refineSettings(settings) {
     dimensions.width = dimensions.height;
 
   settings = merge({}, DEFAULTS, settings, dimensions);
+
+  if (!settings.width && !settings.height)
+    throw new Error('graphology-canvas: need at least a valid width or height!');
 
   return settings;
 };

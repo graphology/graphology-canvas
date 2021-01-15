@@ -25,6 +25,12 @@ renderToPNG(ARCTIC, RENDER_PATH, {width: 4096}, function() {
   console.log('Done rendering arctic!');
 });
 
+console.log('Rendering with default settings...');
+
+renderToPNG(ARCTIC, path.join(OUTPUT_PATH, 'defaults.png'), function() {
+  console.log('Done rendering with default settings!');
+});
+
 console.log('Rendering async...');
 
 var canvas = canvasApi.createCanvas(4096, 2048);
