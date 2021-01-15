@@ -60,7 +60,7 @@ renderToPNG(graph, './graph.png', settings, () => console.log('Done!'));
   * **defaultColor** *?string* [`#999`]: default color for nodes.
   * **reducer** *?function*: reducer fonction for nodes taking the rendering settings, the node key and its attributes and tasked to return rendering info such as `color`, `size` etc.
 * **edges** *?object*: node-related settings:
-  * **defaultColor** *?string* [`#999`]: default color for edges.
+  * **defaultColor** *?string* [`#ccc`]: default color for edges.
   * **reducer** *?function*: reducer fonction for edges taking the rendering settings, the node key and its attributes and tasked to return rendering info such as `color`, `size` etc.
 
 ### Async Settings
