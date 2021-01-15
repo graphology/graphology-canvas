@@ -51,7 +51,7 @@ exports.DEFAULT_NODE_REDUCER = function(settings, node, attr) {
   };
 
   if (typeof reduced.x !== 'number' || typeof reduced.y !== 'number')
-    throw new Error('graphology-canvas: the "' + node + '" node has no valid x or y position. Expecting a number.');
+    throw new Error('graphology-canvas: the "' + node + '" node has no valid x or y position.');
 
   return reduced;
 };
