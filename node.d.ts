@@ -1,4 +1,4 @@
-import Graph from 'graphology-types';
+import Graph, {Attributes} from 'graphology-types';
 import {CanvasRendererSettings} from './';
 
 export function renderToPNG<
